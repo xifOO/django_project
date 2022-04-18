@@ -1,0 +1,1 @@
+SECRET_KEY = 'django_lkfwqkofwekf231ep2efDFWQEPLFGRK!e1ro2k@'
