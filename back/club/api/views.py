@@ -1,3 +1,4 @@
+from rest_framework import filters
 from rest_framework import generics
 from ..models import Club
 from .serializers import *
@@ -9,6 +10,8 @@ class ClubAPIList(generics.ListAPIView):
     queryset = Club.objects.all()
     serializer_class = ClubListSerializer
     permission_classes = [IsAuthenticated, IsSuperUserOrReadOnly]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name']
 
 
 class ClubAPICreate(generics.CreateAPIView):

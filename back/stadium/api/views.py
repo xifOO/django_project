@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from rest_framework import generics
+from rest_framework import filters
 from .serializers import *
 from ..models import Stadium
 from rest_framework.permissions import IsAuthenticated
@@ -10,6 +10,8 @@ class StadiumAPIList(generics.ListAPIView):
     queryset = Stadium.objects.all()
     serializer_class = StadiumListSerializer
     permission_classes = [IsAuthenticated, IsSuperUserOrReadOnly]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name']
 
 
 class StadiumAPICreate(generics.CreateAPIView):

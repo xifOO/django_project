@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
 from permissions import IsSuperUserOrAuthor, IsSuperUserOrAuthorOrReadOnly, IsSuperUserOrReadOnly
 from ..models import FootballPerson
@@ -9,6 +10,8 @@ class PersonAPIList(generics.ListAPIView):
     queryset = FootballPerson.objects.all()
     serializer_class = FootballPersonListSerializer
     permission_classes = [IsAuthenticated, IsSuperUserOrReadOnly]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['first_name', 'second_name']
 
 
 class PersonAPICreate(generics.CreateAPIView):
