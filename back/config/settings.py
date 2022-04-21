@@ -1,12 +1,11 @@
 import os
 from pathlib import Path
-from config import secret
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = secret.SECRET_KEY
+SECRET_KEY = 'secret.SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -30,6 +29,8 @@ INSTALLED_APPS = [
     'stadium',
     #install app
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
 ]
 
 MIDDLEWARE = [

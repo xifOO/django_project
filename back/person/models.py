@@ -25,6 +25,8 @@ class FootballPerson(models.Model):
         blank=False,
         related_name='club_person'
     )
+    height = models.IntegerField(verbose_name='height_person')
+    weight = models.IntegerField(verbose_name='weight_person')
     age = models.PositiveSmallIntegerField(
         default=None,
         blank=False,
